@@ -577,65 +577,59 @@ header {
 }
 
 // signup login
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .tab-button {
-    border: none;
-    background: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .tab-button.active {
-    color: #333;
-    border-bottom: 2px solid #333;
-  }
-  
-  .form-box {
-    display: flex;
-    justify-content: center;
-  }
-  
-  form {
+.signup-login-box {
+    width: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
-  }
-  
-  input {
-    margin: 5px 0;
+}
+.signup-login-tabs {
+    display: flex;
+    justify-content: center;
+    background-color: $bg-color2;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
+}
+
+.signup-login-tab {
     border: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
+    background-color: transparent;
     cursor: pointer;
-  }
-  
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+.signup-login-tab:hover {
+    background-color: $bg-color2;
+    border-radius: 5px;
+}
+
+.signup-login-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.signup-login-form {
+    display: none;
+    button,
+    input {
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    button {
+        background-color: $design-color;
+        color: $bg-color1;
+        border: none;
+        cursor: pointer;
+        &:hover {
+            background-color: $design-color;
+        }
+    }
+}
+
+.signup-login-form.show {
+    display: block;
+}

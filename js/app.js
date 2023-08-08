@@ -9,55 +9,49 @@ let swiper = new Swiper(".mySwiper", {
         clickable: true
     }
 });
-// signup login
-$('.form')
-    .find('input, textarea')
-    .on('keyup blur focus', function (e) {
 
-        let $this = $(this),
-            label = $this.prev('label');
+// signUp logIn
+function switchTab(tabName) {
+    const forms = document.getElementsByClassName('form');
+    for (let i = 0; i < forms.length; i++) {
+        forms[i]
+            .classList
+            .remove('show');
+    }
 
-        if (e.type === 'keyup') {
-            if ($this.val() === '') {
-                label.removeClass('active highlight');
-            } else {
-                label.addClass('active highlight');
-            }
-        } else if (e.type === 'blur') {
-            if ($this.val() === '') {
-                label.removeClass('active highlight');
-            } else {
-                label.removeClass('highlight');
-            }
-        } else if (e.type === 'focus') {
+    const tab = document.getElementById(`${tabName}Form`);
+    tab
+        .classList
+        .add('show');
+}
 
-            if ($this.val() === '') {
-                label.removeClass('highlight');
-            } else if ($this.val() !== '') {
-                label.addClass('highlight');
-            }
-        }
+async function signup() {
+    const username = document
+        .getElementById('signupUsername')
+        .value;
+    const email = document
+        .getElementById('signupEmail')
+        .value;
+    const password = document
+        .getElementById('signupPassword')
+        .value;
+    const passwordConfirm = document
+        .getElementById('signupPasswordConfirm')
+        .value;
 
+    if (password !== passwordConfirm) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    const response = await fetch('http://localhost:8080/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, email, password})
     });
 
-$('.tab a').on('click', function (e) {
-
-    e.preventDefault();
-
-    $(this)
-        .parent()
-        .addClass('active');
-    $(this)
-        .parent()
-        .siblings()
-        .removeClass('active');
-
-    target = $(this).attr('href');
-
-    $('.tab-content > div')
-        .not(target)
-        .hide();
-
-    $(target).fadeIn(600);
-
-});
+    const data = await response.json();
+    alert(data.message); // Assuming the server sends a JSON object with a "message" property
+}
