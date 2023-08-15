@@ -1,34 +1,34 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // Configure Mongoose to connect to your MongoDB database
-// mongoose.connect('mongodb://localhost:27017/your_database_name', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect('mongodb://localhost:27017/user/user-information', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// // Create a schema for user data
-// const userSchema = new mongoose.Schema({
-//   username: String,
-//   email: String,
-//   password: String,
-// });
+// Create a schema for user data
+const userSchema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: String,
+});
 
-// const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
-// app.use(cors()); // Enable CORS for all routes
+app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Middleware to handle CORS headers
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // Handle user signup
 app.post('/signup', (req, res) => {
@@ -77,4 +77,4 @@ app.post('/login', (req, res) => {
 });
 
 // const port = 3000;
-// app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
