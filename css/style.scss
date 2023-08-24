@@ -241,9 +241,7 @@ textarea {
     }
 }
 /* --- */
-* {
-    font-family: opensans;
-}
+
 ol,
 ul {
     list-style: none;
@@ -258,6 +256,13 @@ ul {
     src: url("../webfonts/fa-regular-400.ttf");
     src: url("../webfonts/fa-solid-900.ttf");
     src: url("../webfonts/fa-v4compatibility.ttf");
+}
+* {
+    font-family: opensans;
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
 }
 input {
     &:focus-visible {
@@ -397,8 +402,24 @@ header {
 .signin-register-link {
     color: $text-color2;
     font-size: 16px;
+    i {
+        margin-right: 5px;
+    }
     &:hover {
         color: $design-color;
+    }
+
+}
+.logout-button {
+    span {
+        margin: 0 7px;
+    }
+}
+.breadcrumb {
+    display: flex;
+    margin: 10px 0;
+    li {
+        margin-left: 5px;
     }
 }
 /* top banner */
@@ -656,5 +677,137 @@ header {
     img {
         width: 100%;
         height: auto;
+    }
+}
+.mainBox {
+    width: 500px;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    background-color: $bg-color2;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+.signUpHeader {
+    font-weight: lighter;
+    font-size: 26px;
+    color: $bg-color2;
+    background-color: $design-color;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding: 20px 0;
+}
+.signUpForm {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    input {
+        font-size: 16px;
+        width: 100%;
+        height: 40px;
+        border: 1px solid $text-color2;
+        margin-bottom: 15px;
+        outline: 0;
+        padding: 0 10px;
+        color: $design-color;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+        &:focus,
+        &:focus-visible {
+            border: 1px solid $text-color1;
+        }
+    }
+    label {
+        font-weight: 400;
+        font-size: 20px;
+        color: $text-color2;
+        margin: 15px 0 5px;
+    }
+    button {
+        font-size: 16px;
+        text-align: center;
+        width: 80px;
+        height: 40px;
+        color: $bg-color2;
+        margin-top: 15px;
+        background-color: $design-color;
+        border: 1px solid $design-color;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+        &:hover {
+            color: $design-color;
+            background-color: $bg-color2;
+            border-color: $design-color;
+        }
+    }
+}
+.finalBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.finalBox p {
+    position: relative;
+    text-align: left;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    &:nth-of-type(4n) {
+        &::after {
+            position: relative;
+            content: '';
+            width: 200px;
+            border-bottom: 1px solid #000;
+            margin: 20px 0;
+        }
+    }
+}
+.finalPrgrph {
+    color: $design-color;
+}
+.tabButtons {
+    display: flex;
+}
+.tabButton {
+    width: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0;
+    color: $bg-color2;
+    background-color: $design-color;
+    border: none;
+    border-bottom: 1px solid $bg-color2;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    &:hover {
+        color: $design-color;
+        background-color: $bg-color2;
     }
 }

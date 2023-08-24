@@ -14,8 +14,7 @@
         <link rel="icon" href="../img/profile.png" type="image/svg+xml">
         <link rel="stylesheet" href="../css/all.min.css">
         <link rel="stylesheet" href="../css/normalize.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/style.scss">
+        <link rel="stylesheet" href="../css/style.min.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/swiper-bundle.min.css">
         <link rel="manifest" href="site.webmanifest">
@@ -26,22 +25,32 @@
         <header>
             <div class="container">
                 <div class="navbar-custom">
-                    <a href="./index.ejs" class="header-logo">
+                    <a href="./index.php" class="header-logo">
                         <figure><img src="../img/default.png" alt="header logo"></figure>
                     </a>
                     <ul class="navbar-list">
                         <li class="navbar-link active">
-                            <a href="./index.ejs">Home</a>
+                            <a href="./index.php">Home</a>
                         </li>
                         <li class="navbar-link">
                             <a href="#">Contact</a>
                         </li>
                         <li class="navbar-link">
-                            <a href="./about-us.ejs">About</a>
+                            <a href="./about-us.html">About</a>
                         </li>
                     </ul>
                     <div class="signin-register-sec">
-                        <a href="./signup-login.ejs" class="signin-register-link">sign in/ register</a>
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['username'])) {
+                        echo '<a href="./admin.php" class="username signin-register-link">' .
+                            '<i class="fa-regular fa-user"></i>' . $_SESSION['username'] . '</a>';
+                        // Display the Log Out button
+                        echo '<a href="./logout.php" class="logout-button signin-register-link"><span> - </span>Log Out</a>';
+                    } else {
+                        echo '<a href="./signuplogin.php" class="signin-register-link">sign in/ register</a>';
+                    }
+                    ?>
                     </div>
                 </div>
             </div>
@@ -50,10 +59,10 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Home</li>
                 </ol>
-              </nav>
-              
+            </nav>
+
         </div>
         <!-- top banner -->
         <div class="top-banner">
@@ -156,7 +165,7 @@
                     reprehenderit aliquam, dolorum, accusamus fugit blanditiis deserunt velit
                     pariatur tenetur at perspiciatis. Delectus quod expedita adipisci sint vitae
                     aliquam!</p>
-                <a href="./about-us.ejs" class="about-us-btn">click</a>
+                <a href="./about-us.html" class="about-us-btn">click</a>
             </div>
         </div>
         <!-- footer -->
