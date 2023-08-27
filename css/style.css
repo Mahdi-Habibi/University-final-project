@@ -394,6 +394,13 @@ header {
   margin-left: 5px;
 }
 
+.breadcrumb-item.active a {
+  color: #666;
+}
+.breadcrumb-item a {
+  color: #000;
+}
+
 /* top banner */
 .top-banner {
   width: 100%;
@@ -545,6 +552,49 @@ header {
   color: #076c85;
 }
 
+.jobs-more {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.jobs-more-link {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  color: #333;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.jobs-more-link:hover {
+  color: #076c85;
+}
+.jobs-more-link:hover i {
+  left: 100%;
+}
+.jobs-more-link i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(100% - 5px);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
 .about-us {
   margin-top: 150px;
   background-color: #fafafa;
@@ -656,18 +706,19 @@ header {
   height: auto;
 }
 
+.signup-login-box-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .mainBox {
   width: 500px;
   height: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
   overflow: hidden;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   background-color: #fafafa;
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -791,4 +842,89 @@ header {
 .tabButton:hover {
   color: #076c85;
   background-color: #fafafa;
+}
+
+.user-update-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.user-update-container p {
+  margin: 5px 0;
+}
+.user-update-container p:first-of-type {
+  font-weight: bold;
+}
+.user-update-container a {
+  color: #333;
+  text-decoration: underline !important;
+  margin-top: 10px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.user-update-container a:hover {
+  color: #076c85;
+}
+
+.jobs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-box {
+  width: 100%;
+  height: auto;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fafafa;
+  border: 1px solid #fafafa;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  box-shadow: 3px 3px 10px 3px #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.job-box p {
+  font-size: 14px;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+.job-box:hover {
+  box-shadow: 3px 3px 20px 3px #f3f3f3;
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
+}
+
+.job-box-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.job-box-category {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #666;
 }/*# sourceMappingURL=style.css.map */

@@ -20,7 +20,7 @@
                 </ol>
             </nav>
         </div>
-    <div class="container">
+    <div class="container signup-login-box-container">
         <div class="mainBox" id="formContainer">
         <div class="tabButtons">
             <button class="tabButton" onclick="showForm('signup')">Sign Up</button>
@@ -49,6 +49,7 @@
             </form>
         </div>
     </div>
+    <?php include './footer.php' ?>
 
     <script src="../js/app.min.js"></script>
 
@@ -70,7 +71,6 @@ if (isset($_POST["submitSignup"])) {
         $stmt->bind_param("sss", $username, $email, $password);
 
         if ($stmt->execute()) {
-            session_start();
             $_SESSION['username'] = $username;
             // Redirect to the main page after successful signup
             header("Location: ./index.php");
@@ -96,7 +96,6 @@ if (isset($_POST["submitLogin"])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            session_start();
             $_SESSION['username'] = $loginIdentifier;
             // Redirect to the main page after successful login
             header("Location: ./index.php");

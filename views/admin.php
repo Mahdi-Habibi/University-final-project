@@ -65,7 +65,7 @@ $conn->close();
         <?php endif; ?>
     </div>
 
-    <!-- Rest of your HTML content -->
+    <?php include './footer.php' ?>
 
 </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+require_once './config.php';
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -22,39 +26,7 @@
     </head>
     <body>
         <!-- header -->
-        <header>
-            <div class="container">
-                <div class="navbar-custom">
-                    <a href="./index.php" class="header-logo">
-                        <figure><img src="../img/default.png" alt="header logo"></figure>
-                    </a>
-                    <ul class="navbar-list">
-                        <li class="navbar-link active">
-                            <a href="./index.php">Home</a>
-                        </li>
-                        <li class="navbar-link">
-                            <a href="#">Contact</a>
-                        </li>
-                        <li class="navbar-link">
-                            <a href="./about-us.html">About</a>
-                        </li>
-                    </ul>
-                    <div class="signin-register-sec">
-                    <?php
-                    session_start();
-                    if (isset($_SESSION['username'])) {
-                        echo '<a href="./admin.php" class="username signin-register-link">' .
-                            '<i class="fa-regular fa-user"></i>' . $_SESSION['username'] . '</a>';
-                        // Display the Log Out button
-                        echo '<a href="./logout.php" class="logout-button signin-register-link"><span> - </span>Log Out</a>';
-                    } else {
-                        echo '<a href="./signuplogin.php" class="signin-register-link">sign in/ register</a>';
-                    }
-                    ?>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php include './header.php' ?>
         <!-- breadcrump -->
         <div class="container">
             <nav aria-label="breadcrumb">
@@ -62,7 +34,6 @@
                     <li class="breadcrumb-item active" aria-current="page">Home</li>
                 </ol>
             </nav>
-
         </div>
         <!-- top banner -->
         <div class="top-banner">
@@ -150,6 +121,9 @@
                     </div>
                 </div>
             </div>
+            <div class="jobs-more">
+            <a href="./jobs.php" class="jobs-more-link">see more <i class="fa-solid fa-arrow-right"></i></a>
+            </div> 
         </div>
         <!-- about us -->
         <div class="about-us">
@@ -165,15 +139,11 @@
                     reprehenderit aliquam, dolorum, accusamus fugit blanditiis deserunt velit
                     pariatur tenetur at perspiciatis. Delectus quod expedita adipisci sint vitae
                     aliquam!</p>
-                <a href="./about-us.html" class="about-us-btn">click</a>
+                <a href="./about-us.php" class="about-us-btn">click</a>
             </div>
         </div>
         <!-- footer -->
-        <footer>
-            <div class="container">
-                <p>&copy; 2023 EMPOWER. All rights reserved.</p>
-            </div>
-        </footer>
+        <?php include './footer.php'?>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/app.js"></script>
         <script src="../js/jquery.js"></script>
