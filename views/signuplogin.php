@@ -1,12 +1,11 @@
+<?php
+$title = 'User Authentication';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.min.css">
-    <title>User Authentication</title>
-</head>
+<?php include './head.php' ?>
 
 <body>
     <!-- breadcrump -->
@@ -36,7 +35,7 @@
                 <input type="email" name="email" id="email" required="required" autocomplete="off">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" required="required" autocomplete="off">
-                <button type="submit" name="submitSignup">Sign Up</button>
+                <button type="submit" name="submitSignup" class="signup-login-btn">Sign Up</button>
             </form>
 
             <!-- Log In Form -->
@@ -45,7 +44,7 @@
                 <input type="text" name="login_identifier" id="loginIdentifier" required="required" autocomplete="off">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" required="required" autocomplete="off">
-                <button type="submit" name="submitLogin">Log In</button>
+                <button type="submit" name="submitLogin" class="signup-login-btn">Log In</button>
             </form>
         </div>
     </div>

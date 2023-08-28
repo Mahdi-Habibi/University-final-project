@@ -1,29 +1,17 @@
 <?php
 require_once './config.php';
+$query = "SELECT * FROM jobs";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+$title='EMPOWER';
 ?>
 
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <title>EMPOWER</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta property="og:title" content="">
-        <meta property="og:type" content="">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
-        <link rel="icon" href="../img/profile.png" type="image/svg+xml">
-        <link rel="stylesheet" href="../css/all.min.css">
-        <link rel="stylesheet" href="../css/normalize.css">
-        <link rel="stylesheet" href="../css/style.min.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/swiper-bundle.min.css">
-        <link rel="manifest" href="site.webmanifest">
-        <meta name="theme-color" content="#fafafa">
-    </head>
+    <?php include './head.php' ?>
     <body>
         <!-- header -->
         <?php include './header.php' ?>
@@ -49,81 +37,13 @@ require_once './config.php';
         </div>
         <!-- Swiper -->
         <div class="swiper mySwiper swiper-custom">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">lorem ipsum</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                                quibusdam assumenda incidunt quisquam architecto iure, illo quaerat cupiditate
-                                aliquam repudiandae minima odit nostrum et adipisci deleniti hic odio veniam
-                                temporibus.</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">click</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">lorem ipsum</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                                quibusdam assumenda incidunt quisquam architecto iure, illo quaerat cupiditate
-                                aliquam repudiandae minima odit nostrum et adipisci deleniti hic odio veniam
-                                temporibus.</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">click</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">lorem ipsum</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                                quibusdam assumenda incidunt quisquam architecto iure, illo quaerat cupiditate
-                                aliquam repudiandae minima odit nostrum et adipisci deleniti hic odio veniam
-                                temporibus.</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">click</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">lorem ipsum</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                                quibusdam assumenda incidunt quisquam architecto iure, illo quaerat cupiditate
-                                aliquam repudiandae minima odit nostrum et adipisci deleniti hic odio veniam
-                                temporibus.</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">click</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">lorem ipsum</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                                quibusdam assumenda incidunt quisquam architecto iure, illo quaerat cupiditate
-                                aliquam repudiandae minima odit nostrum et adipisci deleniti hic odio veniam
-                                temporibus.</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">click</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="swiper-wrapper" id="jobs-list">
             </div>
             <div class="jobs-more">
-            <a href="./jobs.php" class="jobs-more-link">see more <i class="fa-solid fa-arrow-right"></i></a>
-            </div> 
+                <a href="./jobs.php" class="jobs-more-link">see more
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
         <!-- about us -->
         <div class="about-us">
@@ -144,6 +64,45 @@ require_once './config.php';
         </div>
         <!-- footer -->
         <?php include './footer.php'?>
+        <script>
+            function updateJobsList() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './get-new-jobs.php', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var jobs = JSON.parse(xhr.responseText);
+                            var jobsList = document.getElementById('jobs-list');
+                            jobsList.innerHTML = ''; // Clear the existing job boxes
+
+                            for (var i = 0; i < jobs.length; i++) {
+                                var job = jobs[i];
+                                var jobBox = document.createElement('div');
+                                jobBox.className = 'job-box swiper-slide';
+                                jobBox.setAttribute('onclick', `location.href='./single-job.php'`);
+                                jobBox.innerHTML = `
+                                <h2 class="job-box-header" onclick="location.href='./single-job.php'">${job.job_title}</h2>
+                                            <ul>
+                                                <li class="job-box-category">${job.job_category}</li>
+                                                <li class="job-contact-info">${job.job_contact_info}</li>
+                                            </ul>
+                                            <p>${job.job_description}</p>
+                                            <p class="job-address">${job.job_address}</p>
+                                            <a href="./single-job.php" class="job-box-link">click</a>
+                    `;
+                                jobsList.appendChild(jobBox);
+                            }
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            // Update jobs list initially and every 10 seconds (adjust the interval as
+            // needed)
+            updateJobsList();
+            setInterval(updateJobsList, 10000);
+        </script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/app.js"></script>
         <script src="../js/jquery.js"></script>

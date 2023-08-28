@@ -1,25 +1,18 @@
+<?php
+require_once './config.php';
+
+$query = "SELECT * FROM jobs";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+$title = 'Jobs';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Posts</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta property="og:title" content="">
-        <meta property="og:type" content="">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
-        <link rel="icon" href="../img/profile.png" type="image/svg+xml">
-        <link rel="stylesheet" href="../css/all.min.css">
-        <link rel="stylesheet" href="../css/normalize.css">
-        <link rel="stylesheet" href="../css/style.min.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/swiper-bundle.min.css">
-        <link rel="manifest" href="site.webmanifest">
-        <meta name="theme-color" content="#fafafa">
-    </head>
+    <?php include './head.php' ?>
     <body>
         <?php include './header.php' ?>
         <!-- breadcrump -->
@@ -29,45 +22,57 @@
                     <li class="breadcrumb-item">
                         <a href="./index.php">Home</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Posts</li>
+                    <li class="breadcrumb-item active" aria-current="page">Jobs</li>
                 </ol>
             </nav>
         </div>
         <div class="container">
-            <div class="jobs">
-                <div class="job-box">
-                    <h2 class="job-box-header">Lorem ipsum dolor sit</h2>
-                    <span class="job-box-category">category</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!</p>
-                    <a href="#" class="job-box-link">click</a>
-                </div>
-            </div>
-            <div class="jobs">
-                <div class="job-box">
-                    <h2 class="job-box-header">Lorem ipsum dolor sit</h2>
-                    <span class="job-box-category">category</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!</p>
-                    <a href="#" class="job-box-link">click</a>
-                </div>
-            </div>
-            <div class="jobs">
-                <div class="job-box">
-                    <h2 class="job-box-header">Lorem ipsum dolor sit</h2>
-                    <span class="job-box-category">category</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!</p>
-                    <a href="#" class="job-box-link">click</a>
-                </div>
-            </div>
-            <div class="jobs">
-                <div class="job-box">
-                    <h2 class="job-box-header">Lorem ipsum dolor sit</h2>
-                    <span class="job-box-category">category</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquam magnam, quos nam voluptate ut modi cupiditate tempora quasi provident sed eligendi nobis exercitationem distinctio corporis perferendis repellendus fugiat illum!</p>
-                    <a href="#" class="job-box-link">click</a>
-                </div>
-            </div>
+            <div class="jobs-list" id="jobs-list"></div>
         </div>
         <?php include './footer.php' ?>
+        <script>
+            function updateJobsList() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './get-new-jobs.php', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var jobs = JSON.parse(xhr.responseText);
+                            console.log(jobs)
+                            var jobsList = document.getElementById('jobs-list');
+                            jobsList.innerHTML = ''; // Clear the existing job boxes
 
+                            for (var i = 0; i < jobs.length; i++) {
+                                var job = jobs[i];
+                                var jobBox = document.createElement('div');
+                                jobBox.className = 'job-box';
+                                jobBox.setAttribute(
+                                    'onclick',
+                                    `location.href='./single-job.php?job_id=${job.job_id}'`
+                                );
+                                jobBox.innerHTML = `
+                        <h2 class="job-box-header" onclick="location.href='./single-job.php?job_id=${job.job_id}">${job.job_title}</h2>
+                        <ul>
+                            <li class="job-box-category">${job.category_name}</li>
+                            <li class="job-contact-info">${job.job_contact_info}</li>
+                            <li class="job-contact-info">${job.username}</li>
+                        </ul>
+                        <p>${job.job_description}</p>
+                        <p class="job-address">${job.job_address}</p>
+                        <a href="./single-job.php?job_id=${job.job_id}" class="job-box-link">click</a>
+                    `;
+                                jobsList.appendChild(jobBox);
+                            }
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            // Update jobs list initially and every 10 seconds (adjust the interval as
+            // needed)
+            updateJobsList();
+            setInterval(updateJobsList, 10000);
+        </script>
     </body>
 </html>

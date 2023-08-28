@@ -537,21 +537,6 @@ header {
   width: 40%;
 }
 
-.job-card {
-  width: 25em;
-}
-.job-card .card-link {
-  color: #333;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-}
-.job-card .card-link:hover {
-  color: #076c85;
-}
-
 .jobs-more {
   width: 100%;
   height: auto;
@@ -769,13 +754,15 @@ header {
   color: #666;
   margin: 15px 0 5px;
 }
-.signUpForm button {
+
+.signup-login-btn {
   font-size: 16px;
   text-align: center;
-  width: 80px;
+  width: auto;
   height: 40px;
   color: #fafafa;
   margin-top: 15px;
+  padding: 5px;
   background-color: #076c85;
   border: 1px solid #076c85;
   transition: all 0.3s;
@@ -789,7 +776,7 @@ header {
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
 }
-.signUpForm button:hover {
+.signup-login-btn:hover {
   color: #076c85;
   background-color: #fafafa;
   border-color: #076c85;
@@ -873,11 +860,12 @@ header {
   color: #076c85;
 }
 
-.jobs {
+.jobs-list {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .job-box {
@@ -916,15 +904,118 @@ header {
   -ms-transform: scale(1.01);
   -o-transform: scale(1.01);
 }
+.job-box ul {
+  display: flex;
+  margin-bottom: 10px;
+  padding-left: 0;
+  align-items: center;
+}
+.job-box ul li {
+  font-size: 16px;
+  color: #333;
+  position: relative;
+}
+.job-box ul li::after {
+  position: relative;
+  content: ".";
+  margin: 0 10px;
+}
 
 .job-box-header {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  box-shadow: 3px 3px 10px 3px #f3f3f3;
+}
+.job-box-header:hover {
+  color: #000;
 }
 
-.job-box-category {
+.job-address {
+  color: #333;
+}
+
+.single-job-box {
+  width: 100%;
+  height: auto;
+  background-color: #fafafa;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  padding: 20px;
+}
+.single-job-box ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.single-job-box ul li {
+  font-size: 20px;
   margin-bottom: 10px;
+  color: #666;
+}
+.single-job-box ul li span {
+  cursor: pointer;
+}
+
+.single-job-header {
+  font-size: 32px;
+  font-weight: bolder;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.user-panel {
+  width: 100%;
+  height: auto;
+  background-color: #fafafa;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  padding: 20px;
+}
+
+.user-panel-header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.user-panel-info-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.user-panel-info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.user-panel-info-list li {
   font-size: 16px;
   color: #666;
+  margin-bottom: 7px;
+}
+.user-panel-info-list li span {
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px;
+}
+
+.user-panel-content {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
