@@ -12,7 +12,6 @@ if (isset($_GET['job_id'])) {
     WHERE jobs.job_id = $job_id;
     ";
     $result = mysqli_query($conn, $query);
-
     if ($result && mysqli_num_rows($result) > 0) {
         $job = mysqli_fetch_assoc($result);
         $title = $job['job_title'];

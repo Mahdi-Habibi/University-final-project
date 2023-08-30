@@ -35,6 +35,7 @@ $title = 'Header';
                     <div class="signin-register-sec">
                     <?php
             if (isset($_SESSION['username'])) {
+                echo '<a href="./job-post.php" class="add-job-link"><i class="fa-solid fa-plus"></i></a>';
                 echo '<a href="./user-panel.php" class="username signin-register-link">' .
                     '<i class="fa-regular fa-user"></i>' . $_SESSION['username'] . '</a>';
                 // Display the Log Out button

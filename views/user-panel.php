@@ -66,11 +66,7 @@ $title = 'User Panel';
             class="container  d-flex flex-column justify-content-center align-items-center">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a
-                        class="tabButton"
-                        id="user-tab"
-                        data-bs-toggle="tab"
-                        href="#user-panel">User Information</a>
+                    <a class="tabButton" id="user-tab" data-bs-toggle="tab" href="#user-panel">User Information</a>
                 </li>
                 <li class="nav-item">
                     <a class="tabButton" id="job-tab" data-bs-toggle="tab" href="#job-panel">Submit New Job</a>
@@ -148,11 +144,11 @@ $title = 'User Panel';
                 <div class="tab-pane fade" id="job-panel">
                     <div class="user-panel">
                         <h2 class="user-panel-info-header">Submit a New Job:</h2>
-                        <form id="job-submit-form" method="post" class="signUpForm">
+                        <form id="job-submit-form" method="post" class="signUpForm col-lg-6">
                             <label for="job_title">Job Title:</label>
                             <input type="text" id="job_title" name="job_title" required="required"><br>
                             <label for="job_description">Job Description:</label>
-                            <textarea id="job_description" name="job_description" required="required"></textarea><br>
+                            <textarea id="job_description" name="job_description" required="required"></textarea>
                             <label for="job_address">Job Address:</label>
                             <input type="text" id="job_address" name="job_address" required="required"><br>
                             <label for="job_contact_info">Contact Information:</label>
@@ -160,7 +156,7 @@ $title = 'User Panel';
                                 type="text"
                                 id="job_contact_info"
                                 name="job_contact_info"
-                                required="required"><br>
+                                required="required">
                             <label for="job_category">Job Category:</label>
                             <select id="job_category" name="job_category" required="required">
                                 <!-- Populate options dynamically from the categories table -->
@@ -214,9 +210,9 @@ $title = 'User Panel';
                     const jobTitleInput = document.getElementById("job_title");
                     const jobDescriptionInput = document.getElementById("job_description");
                     const jobAddressInput = document.getElementById("job_address");
+                    const jobCategoryInput = document.getElementById("job_category");
                     const jobContactInfoInput = document.getElementById("job_contact_info");
-
-                    if (jobTitleInput.value && jobDescriptionInput.value && jobAddressInput.value && jobContactInfoInput.value) {
+                    if (jobTitleInput.value && jobDescriptionInput.value && jobAddressInput.value && jobContactInfoInput.value && jobCategoryInput.value) {
                         const xhr = new XMLHttpRequest();
                         xhr.open('POST', './submit-job.php', true);
                         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -228,6 +224,7 @@ $title = 'User Panel';
                                     jobDescriptionInput.value = "";
                                     jobAddressInput.value = "";
                                     jobContactInfoInput.value = "";
+                                    jobCategoryInput.value = "";
 
                                     // Display success message or handle it as needed
                                     const jobMessage = document.getElementById("job-message");
@@ -235,9 +232,13 @@ $title = 'User Panel';
                                 }
                             }
                         };
-                        xhr.send(
-                            `job_title=${encodeURIComponent(jobTitleInput.value)}&job_description=${encodeURIComponent(jobDescriptionInput.value)}&job_address=${encodeURIComponent(jobAddressInput.value)}&job_contact_info=${encodeURIComponent(jobContactInfoInput.value)}`
-                        );
+                        // Construct the POST data
+                        const postData = `job_title=${encodeURIComponent(jobTitleInput.value)}&job_description=${encodeURIComponent(
+                            jobDescriptionInput.value
+                        )}&job_address=${encodeURIComponent(jobAddressInput.value)}&job_contact_info=${encodeURIComponent(
+                            jobContactInfoInput.value
+                        )}&job_category=${encodeURIComponent(jobCategoryInput.value)}`;
+                        xhr.send(postData);
                     } else {
                         const jobMessage = document.getElementById("job-message");
                         jobMessage.textContent = "Please fill in all the job information!";
