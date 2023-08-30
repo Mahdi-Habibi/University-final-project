@@ -369,13 +369,13 @@ header {
   align-items: center;
   justify-content: center;
   margin-right: 25px;
-  color: #333;
+  color: #666;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-  border: 1px solid #333;
+  border: 1px solid #666;
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -755,7 +755,9 @@ header {
   align-items: flex-start;
   justify-content: center;
 }
-.signUpForm input, .signUpForm select, .signUpForm textarea {
+.signUpForm input,
+.signUpForm select,
+.signUpForm textarea {
   font-size: 16px;
   width: 100%;
   height: 40px;
@@ -771,7 +773,11 @@ header {
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
 }
-.signUpForm input:focus, .signUpForm input:focus-visible, .signUpForm select:focus, .signUpForm select:focus-visible, .signUpForm textarea:focus, .signUpForm textarea:focus-visible {
+.signUpForm input:focus, .signUpForm input:focus-visible,
+.signUpForm select:focus,
+.signUpForm select:focus-visible,
+.signUpForm textarea:focus,
+.signUpForm textarea:focus-visible {
   border: 1px solid #333;
 }
 .signUpForm select option {
@@ -963,6 +969,10 @@ header {
 }
 .indexp-job-box ul {
   align-items: flex-start;
+}
+.indexp-job-box p:first-of-type {
+  height: 85px;
+  overflow: hidden;
 }
 
 .job-box-header {

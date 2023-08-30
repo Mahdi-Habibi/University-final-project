@@ -1,7 +1,12 @@
 <?php
 require_once './config.php'; // Including configuration file
-
-$query = "SELECT * FROM jobs"; // SQL query to select all jobs
+$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+$searchQuery = mysqli_real_escape_string($conn, $searchQuery);
+if (!empty($searchQuery)) {
+    $query = "SELECT * FROM jobs WHERE job_title LIKE '%$searchQuery%'";
+} else {
+    $query = "SELECT * FROM jobs";
+}
 $result = mysqli_query($conn, $query); // Executing the query
 
 if (!$result) {

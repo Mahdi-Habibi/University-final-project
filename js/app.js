@@ -5,9 +5,6 @@ const swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
     loop: true,
 });
-const express = require('express');
-const app = express();
-const ejs = require('ejs');
 
 function showForm(formType) {
     const signupForm = document.getElementById('signupForm');
