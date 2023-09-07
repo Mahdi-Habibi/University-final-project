@@ -28,39 +28,38 @@ $title = 'User Panel';
                 </ol>
             </nav>
         </div>
-        <div class="user-panel">
-            <h2 class="user-panel-info-header">Submit a New Job:</h2>
-            <form id="job-submit-form" method="post" class="signUpForm col-lg-6">
-                <label for="job_title">Job Title:</label>
-                <input type="text" id="job_title" name="job_title" required="required"><br>
-                <label for="job_description">Job Description:</label>
-                <textarea id="job_description" name="job_description" required="required"></textarea>
-                <label for="job_address">Job Address:</label>
-                <input type="text" id="job_address" name="job_address" required="required"><br>
-                <label for="job_contact_info">Contact Information:</label>
-                <input
-                    type="text"
-                    id="job_contact_info"
-                    name="job_contact_info"
-                    required="required">
-                <label for="job_category">Job Category:</label>
-                <select id="job_category" name="job_category" required="required">
-                    <!-- Populate options dynamically from the categories table -->
-                <?php
-                    
+        <div class="container">
 
-                            if (!$categoryResult) {
-                                echo '<option value="">Error fetching categories</option>';
-                            } else {
-                                while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
-                                    echo '<option value="' . $categoryRow['category_id'] . '">' . $categoryRow['category_name'] . '</option>';
-                                }
+            <div class="user-panel">
+                <h2 class="user-panel-info-header">Submit a New Job:</h2>
+                <form id="job-submit-form" method="post" class="signUpForm col-lg-6">
+                    <label for="job_title">Job Title:</label>
+                    <input type="text" id="job_title" name="job_title" required="required">
+                    <label for="job_address">Job Address:</label>
+                    <input type="text" id="job_address" name="job_address" required="required">
+                    <label for="job_contact_info">Contact Information:</label>
+                    <input type="text" id="job_contact_info" name="job_contact_info" required="required">
+                    <label for="job_category">Job Category:</label>
+                    <select id="job_category" name="job_category" required="required">
+                        <!-- Populate options dynamically from the categories table -->
+                        <?php
+                        
+                        
+                        if (!$categoryResult) {
+                            echo '<option value="">Error fetching categories</option>';
+                        } else {
+                            while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
+                                echo '<option value="' . $categoryRow['category_id'] . '">' . $categoryRow['category_name'] . '</option>';
                             }
-                            ?>
-                </select><br>
-                <button type="button" id="job-submit-button" class="signup-login-btn">Submit Job</button>
-            </form>
-            <div id="job-message" class="text-danger mt-2"></div>
+                        }
+                        ?>
+                    </select>
+                    <label for="job_description">Job Description:</label>
+                    <textarea id="job_description" name="job_description" required="required"></textarea>
+                    <button type="button" id="job-submit-button" class="signup-login-btn">Submit Job</button>
+                </form>
+                <div id="job-message" class="text-danger mt-2"></div>
+            </div>
         </div>
         <script>
             document

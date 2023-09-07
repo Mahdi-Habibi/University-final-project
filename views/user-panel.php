@@ -64,119 +64,72 @@ $title = 'User Panel';
         </div>
         <div
             class="container  d-flex flex-column justify-content-center align-items-center">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="tabButton" id="user-tab" data-bs-toggle="tab" href="#user-panel">User Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="tabButton" id="job-tab" data-bs-toggle="tab" href="#job-panel">Submit New Job</a>
-                </li>
-            </ul>
-            <div class="tab-content mt-3 user-panel-content">
-                <div class="tab-pane fade show active" id="user-panel">
-                    <div class="user-panel">
-                        <h1 class="user-panel-header">Welcome to the panel!</h1>
-                        <?php if ($successMessage): ?>
-                        <p class="success-message"><?php echo $successMessage; ?></p>
-                        <?php endif; ?>
+            <div class="mt-3 user-panel-content">
+                <div class="user-panel">
+                    <h1 class="user-panel-header">Welcome to the panel!</h1>
+                    <?php if ($successMessage): ?>
+                    <p class="success-message"><?php echo $successMessage; ?></p>
+                    <?php endif; ?>
 
-                        <?php if ($username && $email && $password): ?>
-                        <h2 class="user-panel-info-header">Registered User Information:</h2>
-                        <ul class="user-panel-info-list">
-                            <li>
-                                <span>Username:</span>
-                                <?php echo $username; ?></li>
-                            <li>
-                                <span>Email:</span>
-                                <?php echo $email; ?></li>
-                            <li>
-                                <span>Password:</span>
-                                <?php echo $password; ?></li>
-                        </ul>
+                    <?php if ($username && $email && $password): ?>
+                    <h2 class="user-panel-info-header">Registered User Information:</h2>
+                    <ul class="user-panel-info-list">
+                        <li>
+                            <span>Username:</span>
+                            <?php echo $username; ?></li>
+                        <li>
+                            <span>Email:</span>
+                            <?php echo $email; ?></li>
+                        <li>
+                            <span>Password:</span>
+                            <?php echo $password; ?></li>
+                    </ul>
 
-                        <button
-                            type="button"
-                            class="signup-login-btn"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Update Information
-                        </button>
+                    <button
+                        type="button"
+                        class="signup-login-btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Update Information
+                    </button>
 
-                        <!-- Modal -->
-                        <div
-                            class="modal fade"
-                            id="exampleModal"
-                            tabindex="-1"
-                            aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Information</h1>
-                                        <button
-                                            type="button"
-                                            class="btn-close"
-                                            data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="update-form" method="post" class="signUpForm">
-                                            <label for="new_username">New Username:</label>
-                                            <input type="text" id="new_username" name="new_username" required="required"><br>
-                                            <label for="new_email">New Email:</label>
-                                            <input type="email" id="new_email" name="new_email" required="required"><br>
-                                            <label for="new_password">New Password:</label>
-                                            <input
-                                                type="password"
-                                                id="new_password"
-                                                name="new_password"
-                                                required="required"><br>
-                                            <button type="button" id="save-button" class="signup-login-btn">Save changes</button>
-                                        </form>
-                                        <div id="message" class="text-danger mt-2"></div>
-                                    </div>
+                    <!-- Modal -->
+                    <div
+                        class="modal fade"
+                        id="exampleModal"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Information</h1>
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="update-form" method="post" class="signUpForm">
+                                        <label for="new_username">New Username:</label>
+                                        <input type="text" id="new_username" name="new_username" required="required"><br>
+                                        <label for="new_email">New Email:</label>
+                                        <input type="email" id="new_email" name="new_email" required="required"><br>
+                                        <label for="new_password">New Password:</label>
+                                        <input
+                                            type="password"
+                                            id="new_password"
+                                            name="new_password"
+                                            required="required"><br>
+                                        <button type="button" id="save-button" class="signup-login-btn">Save changes</button>
+                                    </form>
+                                    <div id="message" class="text-danger mt-2"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="tab-pane fade" id="job-panel">
-                    <div class="user-panel">
-                        <h2 class="user-panel-info-header">Submit a New Job:</h2>
-                        <form id="job-submit-form" method="post" class="signUpForm col-lg-6">
-                            <label for="job_title">Job Title:</label>
-                            <input type="text" id="job_title" name="job_title" required="required"><br>
-                            <label for="job_description">Job Description:</label>
-                            <textarea id="job_description" name="job_description" required="required"></textarea>
-                            <label for="job_address">Job Address:</label>
-                            <input type="text" id="job_address" name="job_address" required="required"><br>
-                            <label for="job_contact_info">Contact Information:</label>
-                            <input
-                                type="text"
-                                id="job_contact_info"
-                                name="job_contact_info"
-                                required="required">
-                            <label for="job_category">Job Category:</label>
-                            <select id="job_category" name="job_category" required="required">
-                                <!-- Populate options dynamically from the categories table -->
-                            <?php
-                    
-
-                            if (!$categoryResult) {
-                                echo '<option value="">Error fetching categories</option>';
-                            } else {
-                                while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
-                                    echo '<option value="' . $categoryRow['category_id'] . '">' . $categoryRow['category_name'] . '</option>';
-                                }
-                            }
-                            ?>
-                            </select><br>
-                            <button type="button" id="job-submit-button" class="signup-login-btn">Submit Job</button>
-                        </form>
-                        <div id="job-message" class="text-danger mt-2"></div>
-                        <?php endif; ?>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -203,47 +156,6 @@ $title = 'User Panel';
                         }
                     });
             });
-
-            document
-                .getElementById("job-submit-button")
-                .addEventListener("click", function () {
-                    const jobTitleInput = document.getElementById("job_title");
-                    const jobDescriptionInput = document.getElementById("job_description");
-                    const jobAddressInput = document.getElementById("job_address");
-                    const jobCategoryInput = document.getElementById("job_category");
-                    const jobContactInfoInput = document.getElementById("job_contact_info");
-                    if (jobTitleInput.value && jobDescriptionInput.value && jobAddressInput.value && jobContactInfoInput.value && jobCategoryInput.value) {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('POST', './submit-job.php', true);
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState === XMLHttpRequest.DONE) {
-                                if (xhr.status === 200) {
-                                    // Clear input fields after successful submission
-                                    jobTitleInput.value = "";
-                                    jobDescriptionInput.value = "";
-                                    jobAddressInput.value = "";
-                                    jobContactInfoInput.value = "";
-                                    jobCategoryInput.value = "";
-
-                                    // Display success message or handle it as needed
-                                    const jobMessage = document.getElementById("job-message");
-                                    jobMessage.textContent = "Job submitted successfully!";
-                                }
-                            }
-                        };
-                        // Construct the POST data
-                        const postData = `job_title=${encodeURIComponent(jobTitleInput.value)}&job_description=${encodeURIComponent(
-                            jobDescriptionInput.value
-                        )}&job_address=${encodeURIComponent(jobAddressInput.value)}&job_contact_info=${encodeURIComponent(
-                            jobContactInfoInput.value
-                        )}&job_category=${encodeURIComponent(jobCategoryInput.value)}`;
-                        xhr.send(postData);
-                    } else {
-                        const jobMessage = document.getElementById("job-message");
-                        jobMessage.textContent = "Please fill in all the job information!";
-                    }
-                });
         </script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/app.js"></script>

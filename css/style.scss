@@ -293,6 +293,10 @@ a {
     font-family: opensans-italic;
     src: url("../webfonts/fonts/OpenSans-Italic.ttf");
 }
+@font-face {
+    font-family: "fontawesome";
+    src: url("../webfonts/fa-brands-400.ttf"), url("../webfonts/fa-regular-400.ttf"), url("../webfonts/fa-solid-900.ttf"), url("../webfonts/fa-v4compatibility.ttf");
+}
 /* colors */
 $bg-color1: #fff;
 $bg-color2: #fafafa;
@@ -485,16 +489,19 @@ header {
 }
 
 .top-banner-searchbar {
-    width: 500px;
+    position: relative;
+    width: 100%;
     height: 40px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    position: relative;
+    justify-content: center;
     margin: 0;
 
     input {
-        width: 100%;
-        height: 100%;
+        position: relative;
+        width: 40%;
+        height: 40px;
         border: 0.5px solid $text-color2;
         padding: 10px;
         border-radius: 12px;
@@ -511,10 +518,32 @@ header {
         }
 
     }
-    i {
-        position: absolute;
-        right: 10px;
-        color: $text-color2;
+}
+#suggestions {
+    position: absolute;
+    top: 40px;
+    background-color: $bg-color2;
+    z-index: 111;
+    width: 40%;
+    padding: 10px;
+}
+.category-suggestion {
+    cursor: pointer;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    border-bottom: .5px solid #eee;
+    margin: 5px 0;
+    background-color: $bg-color2;
+    color: $text-color1;
+    &:hover {
+        background-color: $bg-color1;
+        color: $text-color-active;
+    }
+    &:last-of-type {
+        border-bottom: none;
     }
 }
 .scroll-down1 {
@@ -1054,7 +1083,12 @@ header {
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     padding: 20px;
-
+    display: flex;
+    flex-direction: column;
+    &:nth-child(2) {
+        align-items: center;
+        justify-content: center;
+    }
 }
 .user-panel-header {
     font-size: 32px;

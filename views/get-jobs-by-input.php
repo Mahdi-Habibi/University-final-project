@@ -9,8 +9,29 @@ $input = $_GET['input'];
 // You might need to sanitize and validate the input here before using it in a query
 
 // Construct your SQL query to fetch jobs based on the input
-$query = "SELECT * FROM jobs WHERE job_title LIKE '%$input%'"; // Example query, modify as needed
-
+$query ="SELECT 
+jobs.job_id, 
+jobs.job_title, 
+jobs.job_description,
+jobs.job_address,
+jobs.job_contact_info,
+users.username,
+categories.category_id,
+categories.category_name
+FROM 
+jobs 
+LEFT OUTER JOIN 
+job_categories 
+ON jobs.job_id = job_categories.job_id 
+LEFT OUTER JOIN 
+categories 
+ON job_categories.category_id = categories.category_id 
+LEFT OUTER JOIN 
+users 
+ON jobs.poster_id = users.user_id
+WHERE 
+categories.category_name LIKE '%$input%'
+";
 $result = mysqli_query($conn, $query);
 
 if (!$result) {

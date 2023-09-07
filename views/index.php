@@ -34,11 +34,11 @@ $title = 'EMPOWER'; // Setting the value of the 'title' variable to 'EMPOWER'
         <div class="top-banner">
             <h1 class="top-heading">EMPOWER</h1>
             <p>Find the best job for yourself from around the world!</p>
-            <div class="top-banner-searchbar">
+            <!-- <div class="top-banner-searchbar">
                 <input type="search" name="searchbar" id="searchbar" placeholder="Search...">
                 <i class="fa-regular fa-magnifying-glass search-icon-btn"></i>
                 <div id="suggestions"></div>
-            </div>
+            </div> -->
             <div class="scroll-down1">
                 <i class="fa fa-angle-down"></i>
             </div>
@@ -113,7 +113,7 @@ $title = 'EMPOWER'; // Setting the value of the 'title' variable to 'EMPOWER'
             updateJobsList();
             // setInterval(updateJobsList, 10000);
         </script>
-        <script>
+        <!-- <script>
             var searchInput = document.getElementById('searchbar');
             var suggestionsContainer = document.getElementById('suggestions'); // Container for suggestions
 
@@ -132,7 +132,6 @@ $title = 'EMPOWER'; // Setting the value of the 'title' variable to 'EMPOWER'
             // Attach input event listener to search bar for autocomplete
             searchInput.addEventListener('input', function () {
                 var userInput = searchInput.value;
-
                 // Make an AJAX request to fetch category suggestions
                 var xhr = new XMLHttpRequest();
                 xhr.open(
@@ -216,7 +215,7 @@ $title = 'EMPOWER'; // Setting the value of the 'title' variable to 'EMPOWER'
                 };
                 xhr.send();
             });
-        </script>
+        </script> -->
         <!-- JavaScript dependencies -->
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/app.js"></script>
