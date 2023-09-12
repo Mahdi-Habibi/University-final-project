@@ -57,9 +57,9 @@ $title = 'EMPOWER'; // Setting the value of the 'title' variable to 'EMPOWER'
         <!-- About Us Section -->
         <div class="about-us">
             <div class="container">
-                <h3 class="about-us-header">lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quasi ...</p>
-                <a href="./about-us.php" class="about-us-btn">click</a>
+                <h3 class="about-us-header">Empower</h3>
+                <p>The "Empower" job portal project is a dynamic web platform designed to enhance the job recruitment process for both job seekers and employers. Leveraging technologies such as HTML, CSS, JavaScript, PHP, and MySQL, this project aims to provide a user-friendly and efficient solution for matching job seekers with suitable job opportunities and helping employers find qualified candidates....</p>
+                <a href="./about-us.php" class="about-us-btn">see more</a>
             </div>
         </div>
 

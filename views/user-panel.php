@@ -87,7 +87,7 @@ $title = 'User Panel';
 
                     <button
                         type="button"
-                        class="signup-login-btn"
+                        class="signup-login-btn col-lg-3"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
                         Update Information

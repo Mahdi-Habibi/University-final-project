@@ -23,10 +23,6 @@ $title = 'Header';
                             <a href="/University_final_project/public/views/jobs.php">Jobs</a>
                         </li>
                         <li
-                            class="navbar-link <?php echo (strpos($_SERVER['REQUEST_URI'], '/University_final_project/public/views/contact.php') !== false) ? 'active' : ''; ?>">
-                            <a href="/University_final_project/public/views/contact.php">Contact</a>
-                        </li>
-                        <li
                             class="navbar-link <?php echo (strpos($_SERVER['REQUEST_URI'], '/University_final_project/public/views/about-us.php') !== false) ? 'active' : ''; ?>">
                             <a href="/University_final_project/public/views/about-us.php">About</a>
                         </li>
